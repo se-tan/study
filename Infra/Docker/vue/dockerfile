@@ -1,0 +1,17 @@
+FROM node:14-alpine3.12
+
+WORKDIR /usr/src/firebase_app
+
+# 以下記述方法だとエラーが発生する
+# RUN apk update && \
+#     npm install -g npm @vue/cli
+
+# エラーコード
+# executor failed running 
+# [/bin/sh -c apk update && npm install -g npm @vue/cli]: exit code: 1
+
+RUN apk update 
+RUN npm install -g npm 
+RUN npm install -g @vue/cli 
+RUN npm install vue bootstrap-vue bootstrap
+RUN npm install firebase
