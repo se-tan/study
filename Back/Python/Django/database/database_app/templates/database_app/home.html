@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+
+<body class="container">
+    <header class="container">
+        <nav class="nav nav-pills nav-fill my-2">
+            <a class="nav-link active" aria-current="page" href="/">Top</a>
+            <a class="nav-link" href="/database_app">List</a>
+            <a class="nav-link" href="/database_app/message">Message</a>
+            <a class="nav-link" href="/database_app/check">Check</a>
+            <a class="nav-link" href="/database_app/find">Search</a>
+            <a class="nav-link" href="/admin">Register</a>
+        </nav>
+    </header>
+    <article>
+        <h1 class="display-4 text-primary">{{ message }}</h1>
+    </article>
+
+</body>
+
+</html>

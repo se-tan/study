@@ -1,0 +1,40 @@
+# DB接続設定
+datasource:
+  driver-class-name: org.h2.Driver
+  url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  username: test
+  password: test
+  maxPoolSize: 20
+  # Hibernate設定
+  # 実行したSQLを整形して表示、起動時に必ずdrop tableする
+  hibernate:
+    ddlAuto: create-drop
+    dialect: org.hibernate.dialect.H2Dialect
+    formatSql: true
+    showSql: true
+
+# テストデータの生成
+extension.test.generator.enabled: false
+
+# Spring Actuatorの設定
+# /api/healthにて、DB情報とディスク容量を表示
+management:
+  db.enabled: true
+  endpoint.health.show-details: always
+  endpoints.web.exposure.include: health,env,beans,loggers
+
+# WhiteLabel機能を無効にする
+server:
+  error:
+    path: /error
+    whitelabel.enabled: false
+
+# メッセージ設定
+spring:
+  banner.location: banner.txt
+  # H2DBのコンソールにアクセスできるように設定
+  # /localhost:8080/h2-console/
+  h2.console.enabled: true
+  messages:
+    basename: messages, messages-validation
+    encoding: UTF-8

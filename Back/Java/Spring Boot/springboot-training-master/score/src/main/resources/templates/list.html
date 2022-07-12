@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <title>成績管理システム</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.3.1/semantic.min.css"></link>
+  <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+  <script src="/webjars/Semantic-UI/2.3.1/semantic.min.css"></script>
+  <style type="text/css">
+  .main.container {
+    padding: 6em 2em 2em;
+  }
+  </style>
+</head>
+<body>
+  <div>
+    <!-- ナビゲーションバー -->
+    <div class="ui grid">
+      <div class="ui fixed top menu">
+        <a class="brand item" href="/">成績管理システム</a>
+        <a class="item" th:href="@{/new}">新規登録</a>
+      </div>
+    </div>
+
+    <!-- コンテンツ -->
+    <div class="main ui container">
+      <!-- 検索ボックス -->
+      <form action="/search" th:action="@{/search}" th:object="${nameSearch}" method="get">
+        <div class="ui fluid action left icon input">
+          <i class="search icon"></i>
+          <input type="text" th:field="*{nameKeyword}" placeholder="氏名検索" />
+          <button class="ui primary button" type="submit">検索</button>
+        </div>
+      </form>
+
+		<table class="ui basic table">
+		      <thead>
+		        <tr>
+		          <th>数学の平均点</th><th>英語の平均点</th><th>物理の平均点</th><th>全科目の平均点</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr>
+		           <td th:text="${#numbers.formatDecimal(#aggregates.avg(scores.![mathScore]), 0, 1)}">MathAverage</td>
+		           <td th:text="${#numbers.formatDecimal(#aggregates.avg(scores.![englishScore]), 0, 1)}">EnglishAverage</td>
+		           <td th:text="${#numbers.formatDecimal(#aggregates.avg(scores.![physicsScore]), 0, 1)}">PhysicsAverage</td>
+		           <td th:text="${#numbers.formatDecimal(#aggregates.avg(scores.![totalScore]), 0, 1)}">TotalAverage</td>
+		        </tr>
+		     </tbody>
+		</table>
+		    
+      <!-- 検索結果一覧 -->
+      <table class="ui selectable striped table">
+        <thead>
+          <tr>
+            <th><a th:href="@{/list}" >学籍番号 ▼</a></th>
+            <th>氏名</th>
+            <th><a th:href="@{/search/order-math}" >数学 ▼</a></th>
+            <th><a th:href="@{/search/order-english}" >英語 ▼</a></th>
+            <th><a th:href="@{/search/order-physics}" >物理 ▼</a></th>
+            <th><a th:href="@{/search/order-total}" >合計点 ▼</a></th>
+            <th>平均点</th>
+            <th colspan="2">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="score : ${scores}">
+            <td th:text="${score.studentNumber}">Number</td>
+            <td>
+              <a th:href="@{/detail-{id}-score(id=${score.id})}" th:text="${score.name}"></a>
+            </td>
+            <td th:text="${score.mathScore}">Math</td>
+            <td th:text="${score.englishScore}">English</td>
+            <td th:text="${score.physicsScore}">Physics</td>
+            <td th:text="${score.totalScore}">Total</td>
+             <td th:text="${#numbers.formatDecimal(score.averageScore, 0, 1)}">Average</td>
+            <td>
+              <a th:href="@{/edit-{id}-score(id=${score.id})}">編集</a>
+            </td>
+            <td>
+              <a th:href="@{/delete-{id}-score(id=${score.id})}">削除</a>
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot></tfoot>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

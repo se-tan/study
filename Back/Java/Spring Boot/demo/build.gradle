@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task yarnRunBuild() {
+	if(!file("${rootDir}/ui/node_modules").exists()) {
+		"yarn --prefix ${rootDir}/ui install ${rootDir}/ui".execute().waitForProcessOutput(System.out, System.err)
+	}
+	"yarn --prefix ${rootDir}/ui run build"
+}
+
+processResources {
+	dependsOn yarnRunBuild
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'DemoApplication'
+	}
+}

@@ -1,0 +1,69 @@
+﻿@{ 
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>We Hope you like pizza. That's what we make here.</p>
+</div>
+
+<style>
+    div.button {
+        width: 200px;
+        height: 50px;
+        border-radius: 20px;
+        background-color: lightgray;
+        text-align: center;
+        padding: 10px;
+        margin: 50px;
+    }
+</style>
+
+<h1 class="display-6">Join our mailing list</h1>
+<p>Sign up to hear about all our special offers!</p>
+
+<form name="CustomerInfo">
+    <div class="container w-50 p-3">
+        <div class="row">
+            <label for="Name" class="col-4 text-primary">First Name</label>
+            <div class="col-8"><input type="text" id="Name" required /></div>
+        </div>
+        <div class="row">
+            <label for="Name" class="col-4 text-primary">Last Name</label>
+            <div class="col-8"><input type="text" id="Name" required /></div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-black-50">Phone</div>
+            <div class="col-8"><input type="text" id="Phone" /></div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-block-50">Birthday</div>
+            <div class="col-8"><input type="date" id="Birthday" /></div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-block-50">E-mail Address</div>
+            <div class="col-8"><input type="text" id="E-mail" /></div>
+        </div>
+        <div class="button">
+            <a href="#" onclick="document.getElementById('CustomerInfo').Submit();">Submit Form</a>
+        </div>
+    </div>
+</form>
+
+<p style="font-size: 30px"><b>All about our wonderful pizza!</b></p>
+<p class="bg-light text-muted">We make it fresh every day, sometimes up to two or three times a day!<br /><br />We love to make pizza!</p>
+
+<div class="text-center">
+    <img width="120" src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M.226 112L36.2.2c60 
+16 74 49 81 84z' fill='%23ea8'/%3e%3cpath d='M.197 112L31 14C84 29 96 57 103 88z' fill='%23fea' /%3e%3c/svg%3e" />
+</div>
+
+<p style="font-size: 30px"><b>We take your privacy seriously!</b></p>
+<p class="bg-light text-muted">Unlike other pizza restaurants that shere your pizza preferences, we care about your privacy.<br /><br />Want to know more? <a href="/Privacy">Click here.</a></p>
+
+<p style="font-size: 30px"><b>Delivery options</b></p>
+<p class="bg-light text-muted">There are a few ways we can get the pizza to you:<br />
+    - Postal mail<br />
+    - Dog sled<br />
+    - Drone (experimental!)
+</p>

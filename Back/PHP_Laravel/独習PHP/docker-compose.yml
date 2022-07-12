@@ -1,0 +1,37 @@
+version: "3"
+services:
+  app:
+    image: php:8.1.0-apache
+    volumes:
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ./html:/var/www/html
+    ports:
+      - 8080:80
+    build: .
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    command: --innodb-use-native-aio=0
+    ports:
+      - "8082:3306"
+
+  appmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: test
+      PMA_PASSWORD: test
+    restart: always
+    links:
+      - db:db
+    ports:
+      - "8081:80"

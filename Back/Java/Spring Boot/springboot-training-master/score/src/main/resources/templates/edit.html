@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <title>書籍編集</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.3.1/semantic.min.css"></link>
+  <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+  <script src="/webjars/Semantic-UI/2.3.1/semantic.min.css"></script>
+  <style type="text/css">
+  .main.container {
+    padding: 6em 2em 2em;
+  }
+  </style>
+</head>
+<body>
+  <div>
+    <!-- ナビゲーションバー -->
+    <div class="ui grid">
+      <div class="ui fixed top menu">
+        <a class="brand item" href="/">成績管理システム</a>
+        <div class="item">成績編集</div>
+      </div>
+    </div>
+
+    <!-- コンテンツ -->
+    <div class="main ui container">
+      <form th:object="${score}" method="post">
+        <input th:field="${score.id}" id="id" type="hidden" />
+        <input th:field="${score.studentNumber}" id="studentNumber" type="hidden" />
+        <input th:field="${score.name}" id="name" type="hidden" />
+        <div class="ui form">
+          <div class="field">
+						<label for="studentNumber">学籍番号</label>
+						<p th:text="${score.studentNumber}"></p>
+					</div>
+					<div class="field">
+						<label for="name">氏名</label>
+						<p th:text="${score.name}"></p>
+					</div>
+					<br>
+
+          <div th:classappend="${#fields.hasErrors('mathScore')} ? 'field error' : 'field'">
+            <label for="mathScore">数学</label>
+            <input th:field="*{mathScore}" id="mathScore" type="number" />
+            <label th:if="${#fields.hasErrors('mathScore')}" th:errors="*{mathScore}">error!</label>
+          </div>
+
+          <div th:classappend="${#fields.hasErrors('englishScore')} ? 'field error' : 'field'">
+            <label for="englishScore">英語</label>
+            <input th:field="*{englishScore}" id="englishScore" type="number"  />
+            <label th:if="${#fields.hasErrors('englishScore')}" th:errors="*{englishScore}">error!</label>
+          </div>
+
+          <div th:classappend="${#fields.hasErrors('physicsScore')} ? 'field error' : 'field'">
+            <label for="physicsScore">物理</label>
+            <input th:field="*{physicsScore}" id="physicsScore" type="number"  />
+            <label th:if="${#fields.hasErrors('physicsScore')}" th:errors="*{physicsScore}">error!</label>
+          </div>
+
+          <button type="submit" class="ui primary button">登録</button>
+          <a th:href="@{/list}" class="ui button">キャンセル</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

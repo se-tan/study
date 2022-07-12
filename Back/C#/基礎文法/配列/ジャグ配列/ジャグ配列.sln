@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ジャグ配列", "ジャグ配列\ジャグ配列.csproj", "{3A96499D-07AF-4365-97E4-2C22232D62F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A96499D-07AF-4365-97E4-2C22232D62F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A96499D-07AF-4365-97E4-2C22232D62F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A96499D-07AF-4365-97E4-2C22232D62F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A96499D-07AF-4365-97E4-2C22232D62F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B13F993-E8ED-4B71-ADEC-3057F3809A04}
+	EndGlobalSection
+EndGlobal

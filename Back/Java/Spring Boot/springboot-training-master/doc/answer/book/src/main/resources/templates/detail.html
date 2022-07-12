@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <title>書籍詳細</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.3.1/semantic.min.css"></link>
+  <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+  <script src="/webjars/Semantic-UI/2.3.1/semantic.min.css"></script>
+  <style type="text/css">
+  .main.container {
+    padding: 6em 2em 2em;
+  }
+  </style>
+</head>
+<body>
+  <div>
+    <!-- ナビゲーションバー -->
+    <div class="ui grid">
+      <div class="ui fixed top menu">
+        <a class="brand item" href="/">書籍管理システム</a>
+        <div class="item">書籍詳細</div>
+      </div>
+    </div>
+
+    <!-- コンテンツ -->
+    <div class="main ui container">
+      <div class="ui form">
+        <div class="field">
+          <label for="id">書籍ID</label>
+          <p th:text="${book.id}"></p>
+        </div>
+
+        <div class="field">
+          <label for="title">書籍タイトル</label>
+          <p th:text="${book.title}"></p>
+        </div>
+
+        <div class="field">
+          <label for="publisher">出版社名</label>
+          <p th:text="${book.publisher}"></p>
+        </div>
+
+        <div class="field">
+          <label for="price">価格</label>
+          <p th:text="|￥${book.price}"></p>
+        </div>
+
+        <div class="field">
+          <label for="isbn">ISBN13</label>
+          <p th:text="|ISBN ${book.isbn}"></p>
+        </div>
+
+        <a th:href="@{/list}" class="ui primary button">OK</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
