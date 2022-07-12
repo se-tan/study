@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+    <title>TypeScript ToDo App</title>
+  </head>
+  <body>
+    <div id="App" class="App">
+      <div class="modal-overlay js-modal-off"></div>
+      <header class="header">
+        <h1 class="header-logo">TypeScript ToDo App</h1>
+      </header>
+
+      <section class="App-inner">
+        <form class="form" action="">
+          <input class="addTodo" type="text" placeholder="..add todos" autocomplete="off" />
+          <button class="submit">追加</button>
+        </form>
+
+        <h2 class="list-ttl">タスク一覧</h2>
+        <div class="todolist"></div>
+        <div class="modal"></div>
+      </section>
+    </div>
+
+    <script src="dist/main.js"></script>
+  </body>
+</html>

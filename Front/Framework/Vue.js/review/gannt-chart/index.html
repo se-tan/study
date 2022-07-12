@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <title>スクラッチから作るガントチャート</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="gannt-header" class="h-12 p-2 flex items-center">
+        <h1 class="text-xl font-bold">ガントチャート</h1>
+      </div>
+
+      <div id="gantt-content" class="flex">
+        <div id="gantt-task">
+          <div id="gannt-task-title" class="flex items-center bg-green-600 text-white h-20">
+            <div
+              class="
+                border-t border-r border-b
+                flex
+                items-center
+                justify-center
+                font-bold
+                text-xs
+                w-48
+                h-full
+              "
+            >
+              タスク
+            </div>
+            <div
+              class="
+                border-t border-r border-b
+                flex
+                items-center
+                justify-center
+                font-bold
+                text-xs
+                w-24
+                h-full
+              "
+            >
+              開始日
+            </div>
+            <div
+              class="
+                border-t border-r border-b
+                flex
+                items-center
+                justify-center
+                font-bold
+                text-xs
+                w-24
+                h-full
+              "
+            >
+              完了期限日
+            </div>
+            <div
+              class="
+                border-t border-r border-b
+                flex
+                items-center
+                justify-center
+                font-bold
+                text-xs
+                w-16
+                h-full
+              "
+            >
+              担当
+            </div>
+            <div
+              class="
+                border-t border-r border-b
+                flex
+                items-center
+                justify-center
+                font-bold
+                text-xs
+                w-12
+                h-full
+              "
+            >
+              進捗
+            </div>
+          </div>
+        </div>
+
+        <div id="gantt-calendar">
+          
+          <div id="gantt-day" class="relative h-12">
+            <div v-for="(calendar,index) in calendars" :key="index">
+              <div v-for="(day,index) in calendar.days" :key="index">
+                <div class="
+                  border-r
+                  h-12
+                  absolute
+                  flex
+                  items-center
+                  justify-center
+                  flex-col
+                  font-bold
+                  text-xs"
+                  :style="`width:${block_size}px;left:${day.block_number*block_size}px`">
+                    <span>{{ day.day }}</span>
+                    <span>{{ day.dayOfWeek }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

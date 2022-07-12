@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Page Application</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>{{ title }}</h1>
+            <button class="btn btn-primary my-2" @click="showModal">
+              Register user
+            </button>
+            <table class="table">
+              <thead class="text-white bg-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>NAME</th>
+                  <th>EMAIL</th>
+                  <th>UPDATE</th>
+                  <th>DELETE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="user in users" :key="user.id">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>
+                    <button class="btn btn-primary" @click="editUser(user)">
+                      EDIT
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" @click="deleteUser(user)">
+                      DELETE
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- モーダルウィンドウで表示させる modal タグの内容 -->
+      <modal name="user-modal" :height="300">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h2 v-if="createdFlag">Register user</h2>
+              <h2 v-else>Edit user</h2>
+            </div>
+            <div class="cart-text">
+              <div class="form-group">
+                <label for="id">ID</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="id"
+                  placeholder="Type your ID."
+                  v-model="form.id"
+                />
+              </div>
+              <div class="form-group">
+                <label for="name">NAME</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Type your name."
+                  v-model="form.name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Type your Email."
+                  v-model="form.email"
+                />
+              </div>
+              <button
+                class="btn btn-primary mt-2"
+                @click="registerUser"
+                v-if="createdFlag"
+              >
+                Register
+              </button>
+              <button class="btn btn-primary mt-2" @click="updateUser" v-else>
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </modal>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

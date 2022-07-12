@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #6c7686;
+  background-color: #f6faff;
+  font-family: "Noto Sans JP", "Roboto", sans-serif;
+}
+
+body button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+.App {
+  position: relative;
+}
+
+.App-inner {
+  width: 90%;
+  margin: 0 auto;
+  height: 85vh;
+  position: relative;
+}
+
+.App .modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.App .modal-overlay.js-modal-off {
+  display: none;
+}
+
+.App .header {
+  background: #fff;
+  padding: 30px 60px;
+  border-bottom: 1px solid #f0f4f9;
+}
+
+.App .header-logo {
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  font-weight: bold;
+}
+
+.App .form {
+  padding: 30px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.App .form .submit {
+  display: block;
+  padding: 6.5px 20px;
+  margin-left: 4px;
+  outline: none;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  background: #5c6bc0;
+}
+
+.App input {
+  font: 15px sans-serif;
+  box-sizing: border-box;
+  width: 360px;
+  margin: 8px 0;
+  padding: 0.3em;
+  transition: 0.3s;
+  border: 1px solid #3334;
+  border-radius: 4px;
+  outline: none;
+}
+
+.App .list-ttl {
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.App .todolist {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.App .todolist .list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.App .todolist .list .content {
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.App .todolist .list .menu {
+  display: flex;
+  align-items: center;
+}
+
+.App .todolist .list .menu .editBtn {
+  display: block;
+  padding: 6.5px 20px;
+  margin-left: 4px;
+  outline: none;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  background: #5c6bc0;
+}
+
+.App .todolist .list .menu .deleteBtn {
+  display: block;
+  padding: 6.5px 20px;
+  margin-left: 4px;
+  outline: none;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  background: #ec407a;
+}
+
+.App .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  padding: 30px 50px;
+  background: #f6faff;
+  border: 1px solid #f0f4f9;
+  min-width: 540px;
+  opacity: 0;
+}
+
+.App .modal.js-is-open {
+  opacity: 1;
+}
+
+.App .modal_inner {
+  display: flex;
+  align-items: center;
+}
+
+.App .modal .updateBtn {
+  display: block;
+  padding: 6.5px 20px;
+  margin-left: 4px;
+  outline: none;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  background: #5c6bc0;
+}
+
+.App .none {
+  display: none;
+}
+
+.App .js-is-close {
+  display: none;
+}

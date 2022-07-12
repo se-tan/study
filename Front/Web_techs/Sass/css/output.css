@@ -1,0 +1,13 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+.inverse {
+  background-color: #f3e6cf;
+  color: #e47400;
+  padding: 3px;
+  margin-left: 3px;
+}
+
+/*# sourceMappingURL=output.css.map */

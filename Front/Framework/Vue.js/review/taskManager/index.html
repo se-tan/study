@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <title>タスク管理</title>
+    <style>
+      .base {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: gray;
+        opacity: 0.5;
+      }
+      .content {
+        background-color: white;
+        position: relative;
+        border-radius: 10px;
+        padding: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <teleport to="#modal">
+        <div class="base" v-show="modal">
+          <div class="overlay" v-show="modal" @click="modal=false"></div>
+          <div class="content" v-show="modal">
+            <div class="text font-bold">{{ form.name }}</div>
+            <div class="text-xs">in カテゴリー{{ this.category.name }}</div>
+
+            <div class="my-4">
+              <label class="text-xs">担当者</label>
+              <input class="border rounded-lg px-4 py-2 text-xs" v-model="form.incharge_user" />
+            </div>
+
+            <div class="my-4">
+              <label class="text-xs">開始日</label>
+              <input class="border rounded-lg px-4 py-2 text-xs" v-model="form.start_date" />
+            </div>
+
+            <div class="my-4">
+              <label class="text-xs">終了締切日</label>
+              <input class="border rounded-lg px-4 py-2 text-xs" v-model="form.end_date" />
+            </div>
+            <button
+              class="
+                px-4
+                py-2
+                bg-green-500
+                hover:bg-green-700
+                text-white
+                rounded-lg
+                mr-2
+                font-bold
+                text-xs
+              "
+              @click="taskUpdate"
+            >
+              更新
+            </button>
+          </div>
+        </div>
+      </teleport>
+      <div id="trello-header" class="h-12 p-2">
+        <h1 class="text-sm font-bold">タスク管理</h1>
+      </div>
+
+      <div id="trello-content" class="flex">
+        <div v-for="(category,index) in displayCategories" :key="index" style="min-width: 400px">
+          <div
+            class="bg-gray-200 m-2 p-2 text-sm"
+            @dragstart.self="dragCategory(category)"
+            @dragover="dragOverCategory(category)"
+            draggable="true"
+          >
+            <category-name-update :category="category" @category-name-updated="categoryNameUpdate">
+            </category-name-update>
+
+            <div
+              v-for="(task,index) in category.tasks"
+              :key="index"
+              class="m-2 bg-white p-2"
+              @dragstart="dragTask(task)"
+              @dragover.prevent="dragOverTask(task)"
+              draggable="true"
+              @click="openModal(category, task)"
+            >
+              {{ task.name }}
+            </div>
+            <task-add @task-added="taskAdd" :category_id="category.id"></task-add>
+          </div>
+        </div>
+
+        <div style="min-width: 400px">
+          <div class="bg-gray-200 m-2 p-2 text-sm">
+            <div v-if="!show_category_input" @click="show_category_input=true">
+              カテゴリーを追加
+            </div>
+            <div v-else>
+              <input
+                type="text"
+                class="w-full p-2"
+                placeholder="新しいカテゴリー名を追加してください"
+                v-model="category_name"
+              />
+              <div class="flex m-2">
+                <button
+                  class="
+                    px-4
+                    py-2
+                    bg-green-500
+                    hover:bg-green-700
+                    text-white
+                    rounded-lg
+                    mr-2
+                    font-bold
+                  "
+                  @click="categoryAdd"
+                >
+                  追加
+                </button>
+                <button
+                  class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-lg font-bold"
+                  @click="closeCategoryInput"
+                >
+                  キャンセル
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal"></div>
+    <script src="./index.js"></script>
+  </body>
+</html>

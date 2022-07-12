@@ -1,0 +1,70 @@
+a {
+    text-decoration: none;
+    color: rgb(0, 140, 255);
+}
+
+a:hover {
+    color: #e74c3c;
+    border-bottom: 3px solid #e74c3c;
+}
+
+header ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-menu {
+    margin: 0;
+    background: #eee;
+}
+
+.menu-item {
+    padding: 15px;
+    width: 100%;
+    max-width: 115px;
+    text-align: center;
+}
+
+.passed {
+    font-size: 24px;
+    color: #e74c3c;
+}
+
+.failed {
+    font-size: 18px;
+    color: gray;
+}
+
+.button {
+    background: #fcfcfa;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0px 2px 7px #3338;
+    font-size: 18px;
+    padding: 16px;
+    padding: 8px 16px;
+}
+
+.error {
+    color: red;
+}
+
+.form-area_name {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.for ul {
+    border: 1px solid black;
+    margin-top: 15px;
+    padding: 5px; 
+}
+
+.for li {
+    list-style: inside;
+    padding: 10px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+
+<body>
+    <page>
+        <div id="fruits-list">
+            <page-header class="header"></page-header>
+            <page-content class="content"></page-content>
+        </div>
+    </page>
+
+    <div id="login-example">
+        <user-login></user-login>
+    </div>
+
+    <script type="text/x-template" id="login-template">
+        <div id="login-template">
+            <div>
+                <input type="text" placeholder="ログインID" v-model="userId">
+            </div>
+            <div>
+                <input type="password" placeholder="パスワード" v-model="password">
+            </div>
+            <button @click="login()">ログイン</button>
+        </div>
+    </script>
+    <script src="../js/app.js"></script>
+</body>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input :value="textInput" @input="textInput = $event.target.value" />
+      <p>{{ textInput }}</p>
+      <hr />
+      <input
+        type="checkbox"
+        v-model="checkValue"
+        true-value="Yes"
+        false-value="No"
+      />
+      <p>{{ checkValue }}</p>
+      <hr />
+      <input type="checkbox" v-model="checkItems" value="ラグビー" />ラグビー
+      <input type="checkbox" v-model="checkItems" value="サッカー" />サッカー
+      <input type="checkbox" v-model="checkItems" value="バスケ" />バスケ
+      <p>{{ checkItems }}</p>
+      <hr />
+      <select v-model="selectValue" multiple="">
+        <!-- <option disabled value="">興味のあるスポーツを選択</option> -->
+        <option>ラグビー</option>
+        <option>サッカー</option>
+        <option>バスケ</option>
+      </select>
+      <p>{{ selectValues }}</p>
+      <hr />
+      <select v-model="selectUser">
+        <option
+          v-for="design_user in design_users"
+          :key="design_user.id"
+          :value="design_user.id"
+        >
+          {{ design_user.name }}
+        </option>
+      </select>
+      <hr />
+      <input type="file" @change="handleFile" />
+      {{ fileData }}            
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

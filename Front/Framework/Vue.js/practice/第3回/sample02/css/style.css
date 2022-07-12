@@ -1,0 +1,39 @@
+.btn-humburger {
+    width: 56px;
+    height: 56px;
+    background: transparent;
+    position: relative;
+}
+
+/* ハンバーガーボタンの黒い線 */
+.btn-humburger > div {
+    position: absolute;
+    width: 56px;
+    height: 3px;
+    transition: all 0.2s;
+    background-color: #000;
+}
+
+/* 最初のdiv */
+.btn-humburger > div:first-child {
+    top: 15px;
+    left: 0;
+}
+
+/* 最後のdiv */
+.btn-humburger >div:last-child {
+    bottom: 15px;
+    left: 0;
+}
+
+/* クラスバインディング時に上の線が少し上がって傾く */
+.btn-humburger.is-active > div:first-child {
+    -webkit-transform: translateY(11px) rotate(45deg);
+    transform: translateY(11px) rotate(45deg);
+}
+
+/* クラスバインディング時に下の線が少し下がって傾く */
+.btn-humburger.is-active > div:last-child {
+    -webkit-transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-10px) rotate(-45deg);
+}

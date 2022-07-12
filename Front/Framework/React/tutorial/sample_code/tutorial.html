@@ -1,0 +1,34 @@
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  /* Create React element */
+  /* JSX (need babel) */
+  const name = "John";
+
+  const element = (
+    <>
+      <ul className="list">
+        <li className="list-item">one</li>
+        <li className="list-item">two</li>
+        <li className="list-item">three</li>
+      </ul>
+      <hr />
+      <h2>{name}</h2>
+      <p>{name ? "Hello" : "Bye"}</p>
+      <p>{name && " string"}</p>
+    </>
+  );
+
+  /* JSX is converted by Babel to the bellow.  */
+  // const element = React.createElement("p", { id: "the-text", className: "text" }, ["hello world."]);
+
+  /* Get parent element of the drawing source */
+  const root = document.getElementById("root");
+
+  /* Render React element */
+  ReactDOM.render(element, root);
+</script>

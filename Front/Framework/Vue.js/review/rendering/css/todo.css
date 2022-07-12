@@ -1,0 +1,20 @@
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul > li {
+  margin: 5px;
+  text-indent: 0;
+}
+
+ul > li .complete {
+  text-decoration: line-through;
+  color: #ddd;
+}
+
+#todo {
+  width: 800px;
+  margin: 0 auto;
+}

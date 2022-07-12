@@ -1,0 +1,10 @@
+@use "base";
+$ttl-bg: #f3e6cf;
+$ttl-color: #e47400;
+
+.inverse {
+  background-color: $ttl-bg;
+  color: $ttl-color;
+  padding: 3px;
+  margin-left: 3px;
+}
